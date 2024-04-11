@@ -1,3 +1,17 @@
 import { Routes } from '@angular/router';
+import { AppComponent } from './app.component';
 
-export const routes: Routes = [];
+const routes: Routes = [
+  {
+    path: '',
+    component: AppComponent,
+    title: 'Home page',
+  },
+  // {
+  //   path: ':city_name',
+  //   component: WeatherDisplayComponent,
+  //   title: 'Weather Display',
+  // },
+];
+
+export default routes;

@@ -1,0 +1,50 @@
+body {
+    max-width: 100%;
+    overflow-x: hidden;
+}
+
+.category-class {
+    list-style: none;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    margin-top: 5vh;
+    margin-bottom: 10vh;
+    flex-wrap: wrap;
+}
+
+.category-class img {
+    height: 35vh;
+    width: 35vh;
+    margin: 5vh 10vh 0vh 0vh;
+}
+
+.category-class img:hover {
+    height: 30vh;
+    width: 30vh;
+    padding: 2.5vh 2.5vh 2.5vh 2.5vh;
+    cursor: pointer;
+}
+
+.category-class .category_button {
+    display: flex;
+    flex-direction: column;
+    max-width: fit-content;
+}
+
+.category-class h4 {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    padding-right: 10vh;
+    font-family: "Kanit", sans-serif;
+    font-weight: 800;
+    font-size: 3vh;
+    margin-top: 1vh;
+}
+
+button:hover {
+    background-color: rgba(0, 0, 0, 0.5);
+}

@@ -1,1 +1,55 @@
 /* You can add global styles to this file, and also import other style files */
+* {
+    margin: 0;
+    padding: 0;
+}
+
+:root {
+    --primary-color: rgb(248, 248, 248);
+    --secondary-color: rgb(139, 165, 197);
+}
+
+.navbar {
+    position: sticky;
+    top: 0;
+    background-color: var(--secondary-color);
+    width: 100%;
+    height: 12vh;
+    display: flex;
+    align-items: center;
+}
+
+.navbar-list {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    width: 100%;
+}
+
+.navbar-list li {
+    display: flex;
+    margin: 0vh 10vh;
+}
+
+.navbar-list li a {
+    text-decoration: none;
+    color: black;
+    font-family: 'Gill Sans MT';
+    font-size: 3vh;
+    font-weight: 700;
+}
+
+.navbar-list li a:hover {
+    text-decoration: none;
+    color: rgba(0, 0, 0, 0.55);
+    cursor: pointer;
+}
+
+@media only screen and (max-width: 750px) {
+    .navbar-list {
+        flex-direction: column;
+    }
+}
