@@ -28,19 +28,27 @@ export class QuizPageService {
         const newCategory = document.createElement('li');
 
         const categoryName = data[i].category_name;
+        const categoryId = data[i].category_id;
         const pictureLink =
           this.api_link + 'images/' + data[i].category_picture_path;
 
         const categoryDiv = document.createElement('div');
 
+        const imageAnchor = document.createElement('a');
         const image = document.createElement('img');
         image.src = pictureLink;
+        imageAnchor.appendChild(image);
+        imageAnchor.setAttribute(
+          'ng-reflect-router-link',
+          `/ongoing-quiz,${categoryId}`
+        );
+        imageAnchor.setAttribute('href', `/ongoing-quiz/${categoryId}`);
 
         const header = document.createElement('h4');
         const header_text = document.createTextNode(`${categoryName}`);
         header.appendChild(header_text);
 
-        categoryDiv.appendChild(image);
+        categoryDiv.appendChild(imageAnchor);
         categoryDiv.appendChild(header);
 
         newCategory.appendChild(categoryDiv);

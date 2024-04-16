@@ -1,17 +1,24 @@
 import { Routes } from '@angular/router';
 import { AppComponent } from './app.component';
+import { GameplayPageComponent } from './gameplay-page/gameplay-page.component';
+import { QuizPageComponent } from './quiz-page/quiz-page.component';
 
 const routes: Routes = [
   {
     path: '',
-    component: AppComponent,
+    component: QuizPageComponent,
     title: 'Home page',
   },
-  // {
-  //   path: ':city_name',
-  //   component: WeatherDisplayComponent,
-  //   title: 'Weather Display',
-  // },
+  {
+    path: 'ongoing-quiz/:category_id',
+    component: GameplayPageComponent,
+    title: 'Quiz',
+  },
+  {
+    path: 'leaderboard',
+    component: AppComponent,
+    title: 'Leaderboard',
+  },
 ];
 
 export default routes;
