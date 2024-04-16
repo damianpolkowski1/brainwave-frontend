@@ -1,0 +1,48 @@
+.result-container {
+    padding-top: 5vh;
+    text-align: center;
+    font-family: 'Gill Sans MT';
+}
+
+.result {
+    font-size: 10vh;
+    font-weight: 600;
+}
+
+.result-score {
+    display: inline-block;
+    color: #3366ff;
+}
+
+.larger-digit {
+    font-size: 125%;
+}
+
+.max-score {
+    font-size: 3.5vh;
+    font-weight: 500;
+    color: #888;
+}
+
+.progress-ring {
+    position: relative;
+    width: 400px;
+    height: 400px;
+}
+
+.ring-bg {
+    fill: none;
+    stroke: #ccc;
+    stroke-width: 20;
+}
+
+.ring-fill {
+    fill: none;
+    stroke: #3366ff;
+    stroke-width: 20;
+    stroke-dasharray: 942;
+    stroke-dashoffset: var(--progress, 942);
+    transition: stroke-dashoffset 0.5s ease;
+    transform-origin: center;
+    transform: rotate(-90deg);
+}

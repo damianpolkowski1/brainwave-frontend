@@ -1,5 +1,6 @@
-import { Injectable } from '@angular/core';
+import { Injectable, Inject } from '@angular/core';
 import { Category } from './category';
+import { DOCUMENT } from '@angular/common';
 
 @Injectable({
   providedIn: 'root',
@@ -7,7 +8,7 @@ import { Category } from './category';
 export class QuizPageService {
   private api_link = 'http://localhost:4300/';
 
-  constructor() {}
+  constructor(@Inject(DOCUMENT) private document: Document) {}
 
   async getCategoryData() {
     try {

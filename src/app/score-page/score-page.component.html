@@ -1,0 +1,10 @@
+  <div class="result-container">
+    <svg class="progress-ring" width="400px" length="400px">
+      <circle class="ring-bg" cx="200" cy="200" r="150"></circle>
+      <circle class="ring-fill" cx="200" cy="200" r="150"></circle>
+      <text x="50%" y="50%" dominant-baseline="middle" text-anchor="middle" class="result">
+        <tspan class="result-score"><tspan class="larger-digit">{{ score_first_digit }}</tspan>{{ score_remaining_digits }}</tspan>
+        <tspan x="50%" dy="1.2em" text-anchor="middle" class="max-score">/ 10,000</tspan>
+      </text>
+    </svg>
+  </div>

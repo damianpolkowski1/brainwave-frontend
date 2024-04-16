@@ -10,7 +10,7 @@
 
 .question-content {
     padding: 1.5vh 0;
-    font-size: 4vh;
+    font-size: 4.5vh;
     font-weight: 700;
     max-width: 120vh;
 }
@@ -37,12 +37,15 @@
     padding: 2vh 10vh;
     border: none;
     cursor: pointer;
+    font-family: 'Gill Sans MT';
+    font-weight: 600;
     font-size: 2.5vh;
     display: flex;
     justify-content: center;
     align-items: center;
     max-width: 85vh;
     color: white;
+    position: relative;
 }
 
 #answerButton0 {
@@ -53,12 +56,35 @@
     background-color: rgb(255, 105, 105);
 }
 
+#answerButton0::before {
+    content: '';
+    position: absolute;
+    left: 1.5vh;
+    top: 50%;
+    transform: translateY(-50%) rotate(-90deg);
+    width: 3.25vh;
+    height: 3.25vh;
+    background-color: white;
+    clip-path: polygon(0 0, 100% 50%, 0 100%);
+}
+
 #answerButton1 {
     background-color: rgb(29, 148, 29);
 }
 
 #answerButton1:hover {
     background-color: rgb(87, 182, 87);
+}
+
+#answerButton1::before {
+    content: '';
+    position: absolute;
+    left: 1.5vh;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 3vh;
+    height: 3vh;
+    background-color: white;
 }
 
 #answerButton2 {
@@ -69,10 +95,34 @@
     background-color: rgb(110, 110, 243);
 }
 
+#answerButton2::before {
+    content: '';
+    position: absolute;
+    left: 1.5vh;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 3.25vh;
+    height: 3.25vh;
+    background-color: white;
+    border-radius: 50%;
+}
+
 #answerButton3 {
     background-color: rgb(255, 179, 37);
 }
 
 #answerButton3:hover {
     background-color: rgb(253, 201, 104);
+}
+
+#answerButton3::before {
+    content: '';
+    position: absolute;
+    left: 1.5vh;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 3.5vh;
+    height: 3.5vh;
+    background-color: white;
+    clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
 }

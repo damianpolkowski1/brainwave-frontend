@@ -43,7 +43,7 @@ export class GameplayService {
     return array;
   }
 
-  renderAnswerButtons(question: Question, elementId: string): number {
+  renderAnswerButtons(question: Question, elementId: string, document: Document): number {
     const answersOrder = this.shuffleOrder();
     let correctAnswer = 0;
 
