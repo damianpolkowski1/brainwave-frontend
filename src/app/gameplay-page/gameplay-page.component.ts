@@ -1,4 +1,9 @@
-import { Component, OnInit, ViewEncapsulation, Inject } from '@angular/core';
+import {
+  Component,
+  OnInit,
+  ViewEncapsulation,
+  Inject,
+} from '@angular/core';
 import { CommonModule, DOCUMENT } from '@angular/common';
 import { ActivatedRoute, Router } from '@angular/router';
 import { GameplayService } from '../gameplay.service';
@@ -18,6 +23,9 @@ export class GameplayPageComponent implements OnInit {
   currentQuestionIndex: number = 0;
   currentQuestion: any;
   answers: Answer[] = [];
+  fadeOut: boolean = false;
+  fadeIn: boolean = false;
+  fadeOutFast: boolean = false;
 
   constructor(
     private route: ActivatedRoute,
@@ -32,10 +40,19 @@ export class GameplayPageComponent implements OnInit {
     this.questionSet = await this.gameplayService.getSetOfQuestions(
       category_id
     );
+
+    this.fadeOutFast = true;
+    await this.delay(12);
+    this.fadeOutFast = false;
+
     this.displayQuestion();
   }
 
-  displayQuestion() {
+  private delay(ms: number) {
+    return new Promise((resolve) => setTimeout(resolve, ms));
+  }
+
+  async displayQuestion() {
     let startTime = new Date();
 
     this.currentQuestion = this.questionSet[this.currentQuestionIndex];
@@ -44,6 +61,10 @@ export class GameplayPageComponent implements OnInit {
       'buttonRow',
       this.document
     );
+
+    this.fadeIn = true;
+    await this.delay(700);
+    this.fadeIn = false;
 
     for (let i = 0; i < 4; i++) {
       const button = this.document.getElementById('answerButton' + i);
@@ -62,6 +83,10 @@ export class GameplayPageComponent implements OnInit {
 
           this.currentQuestionIndex++;
 
+          this.fadeOut = true;
+          await this.delay(700);
+          this.fadeOut = false;
+
           for (let x = 0; x < 4; x++) {
             const buttonForDeleting = this.document.getElementById(
               'answerButton' + x
@@ -70,16 +95,14 @@ export class GameplayPageComponent implements OnInit {
           }
 
           if (this.currentQuestionIndex >= 10) {
-            console.log(
-              'Score: ' +
-                (await this.gameplayService.calculateScore(this.answers))
-            );
             this.scoreService.setScore(
               await this.gameplayService.calculateScore(this.answers)
             );
+            console.log(this.scoreService.getScore().score);
             this.router.navigate(['/finished-quiz']);
             return;
           }
+
           this.displayQuestion();
         });
       }

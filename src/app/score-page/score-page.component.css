@@ -1,21 +1,25 @@
-.result-container {
-    padding-top: 5vh;
+.animated-result {
     text-align: center;
     font-family: 'Gill Sans MT';
 }
 
+.score-header {
+    font-size: 6vh;
+    font-weight: 600;
+    margin-top: 2vh;
+}
+
 .result {
-    font-size: 10vh;
+    font-size: 70px;
     font-weight: 600;
 }
 
 .result-score {
     display: inline-block;
-    color: #3366ff;
 }
 
 .larger-digit {
-    font-size: 125%;
+    font-size: 130%;
 }
 
 .max-score {
@@ -42,7 +46,83 @@
     stroke-width: 20;
     stroke-dasharray: 942;
     stroke-dashoffset: var(--progress, 942);
-    transition: stroke-dashoffset 0.5s ease;
+    transition: stroke-dashoffset 0.2s ease;
     transform-origin: center;
     transform: rotate(-90deg);
+}
+
+.result-summary {
+    margin-top: -3vh;
+    text-align: center;
+    font-family: 'Gill Sans MT';
+    height: auto;
+}
+
+.center-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.correctness-div {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 4vh;
+}
+
+.animated-result {
+    margin-bottom: 0;
+}
+
+.summary-header {
+    font-size: 6vh;
+    font-weight: 600;
+    padding-bottom: 1.5vh;
+}
+
+.correctness-summary {
+    display: flex;
+    align-items: center;
+    font-size: 2.5vh;
+    font-weight: 500;
+}
+
+.correctness-summary2 {
+    padding-top: 1.5vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2.5vh;
+    font-weight: 500;
+}
+
+.correctness-summary img {
+    margin-right: 2.5vh;
+    width: 8vh;
+}
+
+.correctness-summary2 img {
+    margin-right: 2.5vh;
+    width: 8vh;
+}
+
+.next-anchor {
+    position: fixed;
+    right: 1vh;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #6a6a6a;
+    font-family: 'Gill Sans MT';
+    font-weight: 500;
+    font-size: 4vh;
+    text-decoration: none;
+}
+
+.next-anchor:hover {
+    color: #aeaeae;
+    font-size: 3.5vh;
+    right: 1.25vh;
+    cursor: pointer;
 }

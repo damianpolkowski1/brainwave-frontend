@@ -1,0 +1,75 @@
+body {
+    overflow: hidden;
+    height: 100vh;
+}
+
+.form-section {
+    font-family: "Gill Sans MT";
+    width: 50vw;
+    text-align: center;
+    margin: auto;
+    transform: translateX(0) translateY(50%);
+  }
+
+.form-section .section-heading {
+    font-size: 6vh;
+    margin-bottom: 5vh;
+}
+
+label, input {
+    display: block;
+}
+
+label {
+    color: var(--secondary-color);
+    font-weight: bold;
+    text-transform: uppercase;
+    font-size: 3.25vh;
+}
+
+input {
+    font-family: "Gill Sans MT";
+    font-size: 4.5vh;
+    margin-top: 1.5vh;
+    margin-bottom: 3.5vh;
+    padding: 10px 0;
+    width: 100%;
+    border: none;
+    border-bottom: solid .3px;
+    outline: none;
+    text-align: center;
+}
+
+input:focus {
+    border-bottom: solid 1.5px #337ab7
+}
+
+input::placeholder {
+    text-align: center;
+    vertical-align: middle;
+}
+
+input:-ms-input-placeholder {
+    text-align: center;
+    vertical-align: middle;
+}
+input::-ms-input-placeholder {
+    text-align: center;
+    vertical-align: middle;
+}
+
+button.add-button {
+    margin-top: 2.5vh;
+    font-family: "Gill Sans MT";
+    font-size: 3.75vh;
+    padding: 2vh 5.5vh;
+    background-color: #337ab7;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+button.primary:hover {
+    background-color: #265d8c;
+}

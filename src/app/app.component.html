@@ -1,9 +1,9 @@
 <header id="navbar-id" class="navbar">
-  <a ng-reflect-router-link="/" href="/">
+  <a [routerLink]="['/']">
     <img class="brand-logo" src="/assets/brainwave_logo.svg" alt="logo">
   </a>
   <ul class="navbar-list">
-    <li><a>Quiz</a></li>
+    <li><a [routerLink]="['/']">Quiz</a></li>
     <li><a>Leaderboard</a></li>
     <li><a>Manage Questions</a></li>
   </ul>

@@ -1,10 +1,10 @@
-<div class="question-div">
+<div class="question-div" [class.fade-out]="fadeOut" [class.fade-in]="fadeIn" [class.fade-out-fast]="fadeOutFast">
     <div class="centered-content">
         <img class="question-image" src="{{ currentQuestion?.question_picture_path }}"/>
         <h2 class="question-content">{{ currentQuestion?.question_content }}</h2>
     </div>
 </div>
-<div class="answer-div">
+<div class="answer-div" [class.fade-out]="fadeOut" [class.fade-in]="fadeIn" [class.fade-out-fast]="fadeOutFast">
     <div class="button-row" id="buttonRow1"></div>
     <div class="button-row" id="buttonRow2"></div>
 </div>

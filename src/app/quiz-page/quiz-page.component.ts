@@ -17,7 +17,21 @@ export class QuizPageComponent implements OnInit {
     @Inject(DOCUMENT) private document: any
   ) {}
 
-  ngOnInit() {
+  fadeIn: boolean = false;
+  fadeOutFast: boolean = false;
+
+  private delay(ms: number) {
+    return new Promise((resolve) => setTimeout(resolve, ms));
+  }
+
+  async ngOnInit() {
+    this.fadeOutFast = true;
+    await this.delay(12);
+    this.fadeOutFast = false;
+
     this.quizPageService.renderCategories(this.document);
+    this.fadeIn = true;
+    await this.delay(700);
+    this.fadeIn = false;
   }
 }

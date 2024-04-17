@@ -17,6 +17,7 @@
     height: 12vh;
     display: flex;
     align-items: center;
+    z-index: 99;
 }
 
 .navbar-list {
@@ -46,6 +47,66 @@
     text-decoration: none;
     color: rgba(0, 0, 0, 0.55);
     cursor: pointer;
+}
+
+.fade-out {
+    transition: opacity 0.7s ease;
+    opacity: 0;
+}
+
+.fade-out-fast {
+    transition: opacity 0.01s ease;
+    opacity: 0;
+}
+  
+.fade-in {
+    transition: opacity 0.7s ease;
+    opacity: 1;
+}
+
+@keyframes slide-out {
+    0% {
+        transform: translateX(0%);
+        opacity: 1;
+    }
+    100% {
+        transform: translateX(-100%);
+        opacity: 0;
+    }
+}
+  
+.slide-out {
+    animation: slide-out 0.8s ease;
+}
+
+@keyframes slide-out-anchor {
+    0% {
+        transform: translateX(0%);
+        opacity: 1;
+    }
+    100% {
+        transform: translateX(-1300%);
+        opacity: 0;
+    }
+}
+  
+.slide-out-anchor {
+    animation: slide-out-anchor 0.8s ease;
+}
+
+@keyframes slide-in {
+    0% {
+        transform: translateX(100%) translateY(50%);
+        opacity: 0;
+    }
+    100% {
+        transform: translateX(0%) translateY(50%);
+        opacity: 1;
+    }
+}
+
+.slide-in {
+    animation: slide-in 0.8s ease;
 }
 
 @media only screen and (max-width: 750px) {

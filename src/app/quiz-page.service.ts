@@ -1,6 +1,5 @@
-import { Injectable, Inject } from '@angular/core';
+import { Injectable } from '@angular/core';
 import { Category } from './category';
-import { DOCUMENT } from '@angular/common';
 
 @Injectable({
   providedIn: 'root',
@@ -8,7 +7,7 @@ import { DOCUMENT } from '@angular/common';
 export class QuizPageService {
   private api_link = 'http://localhost:4300/';
 
-  constructor(@Inject(DOCUMENT) private document: Document) {}
+  constructor() {}
 
   async getCategoryData() {
     try {
@@ -24,9 +23,14 @@ export class QuizPageService {
   }
 
   async renderCategories(document: Document) {
+    const list_elements = document.getElementById('category-li-1');
+
+    if (list_elements) return;
+
     this.getCategoryData().then((data) => {
       for (let i = 0; i < data.length; i++) {
         const newCategory = document.createElement('li');
+        newCategory.setAttribute('id', `category-li-${i}`);
 
         const categoryName = data[i].category_name;
         const categoryId = data[i].category_id;

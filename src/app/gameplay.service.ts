@@ -43,7 +43,11 @@ export class GameplayService {
     return array;
   }
 
-  renderAnswerButtons(question: Question, elementId: string, document: Document): number {
+  renderAnswerButtons(
+    question: Question,
+    elementId: string,
+    document: Document
+  ): number {
     const answersOrder = this.shuffleOrder();
     let correctAnswer = 0;
 
@@ -75,13 +79,13 @@ export class GameplayService {
       if (element) {
         element.appendChild(answerButton);
       }
-      this.styleAnswerButtons('answer-button');
+      this.styleAnswerButtons('answer-button', document);
     }
 
     return correctAnswer;
   }
 
-  styleAnswerButtons(button_class: string) {
+  styleAnswerButtons(button_class: string, document: Document) {
     const buttons: NodeListOf<HTMLButtonElement> = document.querySelectorAll(
       '.' + button_class
     );

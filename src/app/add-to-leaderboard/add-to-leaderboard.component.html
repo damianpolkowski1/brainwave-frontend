@@ -1,0 +1,10 @@
+<section class="form-section" [class.fade-in]="fadeIn" [class.fade-out]="fadeOut" [class.slide-in]="slideIn">
+    <h2 class="section-heading">Add your score to leaderboard!</h2>
+
+    <form [formGroup]="leaderboardForm" (submit)="submitForm()" autocomplete="off">
+        <label for="nickname">Your Nickname:</label>
+        <input id="nickname" type="text" formControlName="Nickname">
+
+        <button type="submit" class="add-button">Add to Leaderboard</button>
+    </form>
+</section>
