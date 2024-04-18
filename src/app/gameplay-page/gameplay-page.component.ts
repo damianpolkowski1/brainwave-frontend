@@ -69,42 +69,46 @@ export class GameplayPageComponent implements OnInit {
     for (let i = 0; i < 4; i++) {
       const button = this.document.getElementById('answerButton' + i);
 
+      const handleClick = async () => {
+        button?.removeEventListener('click', handleClick);
+
+        if (i === correctAnswerButtonId) {
+          let endTime = new Date();
+          const time = endTime.getTime() - startTime.getTime();
+          this.answers.push({ correct: true, time: time });
+        } else {
+          let endTime = new Date();
+          const time = endTime.getTime() - startTime.getTime();
+          this.answers.push({ correct: false, time: time });
+        }
+
+        this.currentQuestionIndex++;
+
+        this.fadeOut = true;
+        await this.delay(700);
+        this.fadeOut = false;
+
+        for (let x = 0; x < 4; x++) {
+          const buttonForDeleting = this.document.getElementById(
+            'answerButton' + x
+          );
+          buttonForDeleting?.remove();
+        }
+
+        if (this.currentQuestionIndex >= 10) {
+          this.scoreService.setScore(
+            await this.gameplayService.calculateScore(this.answers)
+          );
+          console.log(this.scoreService.getScore().score);
+          this.router.navigate(['/finished-quiz']);
+          return;
+        }
+
+        this.displayQuestion();
+      }
+
       if (button) {
-        button.addEventListener('click', async () => {
-          if (i === correctAnswerButtonId) {
-            let endTime = new Date();
-            const time = endTime.getTime() - startTime.getTime();
-            this.answers.push({ correct: true, time: time });
-          } else {
-            let endTime = new Date();
-            const time = endTime.getTime() - startTime.getTime();
-            this.answers.push({ correct: false, time: time });
-          }
-
-          this.currentQuestionIndex++;
-
-          this.fadeOut = true;
-          await this.delay(700);
-          this.fadeOut = false;
-
-          for (let x = 0; x < 4; x++) {
-            const buttonForDeleting = this.document.getElementById(
-              'answerButton' + x
-            );
-            buttonForDeleting?.remove();
-          }
-
-          if (this.currentQuestionIndex >= 10) {
-            this.scoreService.setScore(
-              await this.gameplayService.calculateScore(this.answers)
-            );
-            console.log(this.scoreService.getScore().score);
-            this.router.navigate(['/finished-quiz']);
-            return;
-          }
-
-          this.displayQuestion();
-        });
+        button.addEventListener('click', handleClick);
       }
     }
   }
