@@ -1,0 +1,267 @@
+.leaderboard-container {
+    text-align: center;
+    margin-top: 3vh;
+    font-family: 'Gill Sans MT';
+  }
+  
+  .category-dropdown {
+    margin-bottom: 3vh;
+  }
+  
+  .category-dropdown select {
+    font-family: 'Gill Sans MT';
+    padding: 1.5vh;
+    font-size: 2.5vh;
+  }
+  
+  .leaderboard-list {
+    margin-top: 3vh;
+    margin-bottom: 10vh;
+    width: 63%;
+    margin: 0 auto;
+    text-align: center;
+    position: relative;
+  }
+  
+  .leaderboard-list h2 {
+    font-size: 5vh;
+    margin-bottom: 2.5vh;
+  }
+  
+  .leaderboard-list ol {
+    list-style-type: none;
+    padding: 0;
+  }
+  
+  .leaderboard-list li {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 2.5vh;
+    padding: 2vh 0;
+    border-bottom: 0.15vh solid #ccc;
+  }
+
+  .leaderboard-list li:first-child {
+    font-size: 3vh;
+    font-weight: 550;
+  }
+  
+  .leaderboard-list li:last-child {
+    border-bottom: none;
+  }
+
+  .leaderboard-list li .crown-span {
+    width: 3%;
+    margin-right: -0.5%;
+}
+  
+  .crown-img {
+    width: 100%;
+    height: auto;
+  }
+  
+  .leaderboard-list li .category {
+    width: 25%;
+  }
+  
+  .leaderboard-list li .position {
+    width: 15%;
+  }
+
+  .leaderboard-list li .position-1 {
+    margin-right: 2.5%;
+    width: 10%;
+  }
+  
+  .leaderboard-list li .username {
+    width: 30%;
+  }
+  
+  .leaderboard-list li .score {
+    width: 20%;
+  }
+  
+  .leaderboard-list li .date {
+    width: 10%;
+  }
+  
+  .reset-button {
+    margin-top: 5vh;
+    margin-bottom: 5vh;
+    padding: 2vh 8vh;
+    border: none;
+    cursor: pointer;
+    font-family: 'Gill Sans MT';
+    font-weight: 600;
+    font-size: 2.5vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgb(227, 26, 26);
+    color: white;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .reset-button:hover {
+    background-color: rgb(227, 85, 85);
+  }
+
+  @keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(10vh);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeOutDown {
+    from {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+    to {
+        opacity: 0;
+        transform: translateY(10vh);
+    }
+}
+
+  .overlay-container.show {
+    display: flex;
+    opacity: 1;
+  }
+
+  .overlay-container.hide {
+    display: flex;
+    opacity: 0;
+  }
+
+  .popup-form-container {
+    display: flex;
+    flex-direction: column;
+}
+
+.popup-window h2 {
+    font-size: 3.75vh;
+    margin-bottom: 1vh;
+}
+
+.popup-window h3 {
+  font-size: 2.25vh;
+  margin-bottom: 3vh;
+  font-weight: 500;
+}
+
+.popup-form-label {
+    margin-bottom: 1vh;
+    font-size: 1.75vh;
+    color: #444;
+    text-align: left;
+    font-family: "Kanit", sans-serif;
+    font-weight: 600;
+}
+
+.popup-form-input {
+    padding: 1vh;
+    margin-bottom: 3vh;
+    border: 0.25vh solid #ccc;
+    border-radius: 1.25vh;
+    font-size: 2vh;
+    box-sizing: border-box;
+}
+
+.overlay-container [type=submit] {
+    padding: 1.5vh 4vh;
+    border: none;
+    border-radius: 1.25vh;
+    background-color: rgb(10, 156, 10);
+    color: #fff;
+    font-family: "Kanit", sans-serif;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.close-form-button {
+    padding: 1.5vh 4vh;
+    border: none;
+    border-radius: 1.25vh;
+    background-color: rgb(171, 31, 31);
+    color: #fff;
+    font-family: "Kanit", sans-serif;
+    font-weight: 600;
+}
+
+.close-form-button:hover {
+    background-color: rgb(201, 109, 109);
+}
+
+.overlay-container {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.6);
+  justify-content: center;
+  align-items: center;
+  opacity: 0;
+  transition: opacity 0.5s ease;
+}
+
+.popup-window {
+  background: #fff;
+  padding: 4vh;
+  border-radius: 3vh;
+  width: 50vh;
+  text-align: center;
+  opacity: 0;
+  animation: fadeInUp 0.5s ease-out forwards;
+  font-family: "Kanit", sans-serif;
+  font-weight: 600;
+}
+
+.do-reset-button {
+  background-color: rgb(227, 26, 26);
+  border: none;
+  color: white;
+  padding: 1.25vh 2vh;
+  width: 15vh;
+  height: 5vh;
+  text-align: center;
+  display: inline-block;
+  font-size: 2.25vh;
+  font-family: "Kanit", sans-serif;
+  font-weight: 600;
+  margin-right: 2vh;
+}
+
+.do-reset-button:hover {
+  background-color: rgb(231, 110, 110);
+  cursor: pointer;
+}
+
+.do-not-reset-button {
+  background-color: rgb(17, 188, 17);
+  border: none;
+  color: white;
+  padding: 1.25vh 2vh;
+  width: 15vh;
+  height: 5vh;
+  text-align: center;
+  display: inline-block;
+  font-size: 2.25vh;
+  font-family: "Kanit", sans-serif;
+  font-weight: 600;
+}
+
+.do-not-reset-button:hover {
+  background-color: rgb(108, 218, 108);
+  cursor: pointer;
+}

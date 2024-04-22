@@ -1,0 +1,21 @@
+<div class="leaderboard-container" id="leaderboard-container-id">
+    <div class="category-dropdown" [class.fade-in]="fadeInDropdown" [class.fade-out-fast]="fadeOutFast">
+      <select class="select-dropdown" id="dropdown-id" [(ngModel)]="selectedCategory" (change)="onCategoryChange()">
+        <option value="0" selected>All Categories</option>
+      </select>
+    </div>
+    <div class="leaderboard-list" [class.fade-in]="fadeInList" [class.fade-out-fast]="fadeOutFast" [class.fade-out]="fadeOut">
+      <h2>Leaderboard</h2>
+      <ol id="leaderboard-ordered-list">
+        <li class="leaderboard-list-description">
+          <span class="position">Position</span>
+          <span class="username">Username</span>
+          <span class="category">Category</span>
+          <span class="score">Score</span>
+          <span class="date">Date</span>
+        </li>
+      </ol>
+
+      <button class="reset-button" (click)="onResetClick()">Reset Leaderboard</button>
+    </div>
+  </div>

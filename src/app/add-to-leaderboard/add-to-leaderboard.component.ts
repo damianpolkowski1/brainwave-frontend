@@ -50,7 +50,8 @@ export class AddToLeaderboardComponent implements OnInit {
 
     this.scoreService.postScore(
       this.scoreService.getScore().score,
-      this.leaderboardForm.value.Nickname ?? ''
+      this.leaderboardForm.value.Nickname ?? '',
+      this.scoreService.getCategory()
     );
 
     this.router.navigate([`/`], { relativeTo: this.route });

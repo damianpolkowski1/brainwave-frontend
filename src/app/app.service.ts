@@ -39,4 +39,17 @@ export class AppService {
       element.appendChild(pagesList);
     }
   }
+
+  togglePopup(FormId: string) {
+    const overlay = this.document.getElementById(FormId);
+    if (overlay) overlay.classList.toggle('show');
+  }
+
+  closePopup(FormId: string) {
+    const overlay = this.document.getElementById(FormId);
+    if (overlay) {
+      overlay.classList.toggle('hide');
+      overlay.remove();
+    }
+  }
 }

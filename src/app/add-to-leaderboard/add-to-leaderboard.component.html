@@ -3,7 +3,7 @@
 
     <form [formGroup]="leaderboardForm" (submit)="submitForm()" autocomplete="off">
         <label for="nickname">Your Nickname:</label>
-        <input id="nickname" type="text" formControlName="Nickname">
+        <input id="nickname" type="text" formControlName="Nickname" required>
 
         <button type="submit" class="add-button">Add to Leaderboard</button>
     </form>

@@ -1,9 +1,4 @@
-import {
-  Component,
-  OnInit,
-  ViewEncapsulation,
-  Inject,
-} from '@angular/core';
+import { Component, OnInit, ViewEncapsulation, Inject } from '@angular/core';
 import { CommonModule, DOCUMENT } from '@angular/common';
 import { ActivatedRoute, Router } from '@angular/router';
 import { GameplayService } from '../gameplay.service';
@@ -37,6 +32,7 @@ export class GameplayPageComponent implements OnInit {
 
   async ngOnInit() {
     const category_id = parseInt(this.route.snapshot.params['category_id'], 10);
+    this.scoreService.setCategory(category_id);
     this.questionSet = await this.gameplayService.getSetOfQuestions(
       category_id
     );
@@ -105,7 +101,7 @@ export class GameplayPageComponent implements OnInit {
         }
 
         this.displayQuestion();
-      }
+      };
 
       if (button) {
         button.addEventListener('click', handleClick);
