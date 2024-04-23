@@ -90,6 +90,7 @@
 
   .modify-button {
     background-color: rgb(17, 188, 17);
+    font-size: 2.25vh;
   }
 
   .modify-button:hover {
@@ -99,6 +100,7 @@
 
   .delete-button {
     background-color: rgb(227, 26, 26);
+    font-size: 2.25vh;
   }
   
   .delete-button:hover {
@@ -204,6 +206,7 @@
 
 .submit-button {
     background-color: rgb(17, 188, 17);
+    font-size: 2.25vh;
 }
 
 .submit-button:hover {
@@ -233,4 +236,49 @@
 
 .close-button:hover {
   color: rgb(231, 110, 110);
+}
+
+.do-delete-button {
+  background-color: rgb(227, 26, 26);
+  border: none;
+  color: white;
+  padding: 1.25vh 2vh;
+  width: 15vh;
+  height: 5vh;
+  text-align: center;
+  display: inline-block;
+  font-size: 2.25vh;
+  font-family: 'Gill Sans MT';
+  font-weight: 600;
+  margin-right: 2vh;
+}
+
+.do-delete-button:hover {
+  background-color: rgb(231, 110, 110);
+  cursor: pointer;
+}
+
+.do-not-delete-button {
+  background-color: rgb(17, 188, 17);
+  border: none;
+  color: white;
+  padding: 1.25vh 2vh;
+  width: 15vh;
+  height: 5vh;
+  text-align: center;
+  display: inline-block;
+  font-size: 2.25vh;
+  font-family: 'Gill Sans MT';
+  font-weight: 600;
+}
+
+.do-not-delete-button:hover {
+  background-color: rgb(108, 218, 108);
+  cursor: pointer;
+}
+
+.popup-window h3 {
+  font-size: 2.25vh;
+  margin-bottom: 3vh;
+  font-weight: 500;
 }

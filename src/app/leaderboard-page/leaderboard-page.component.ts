@@ -37,7 +37,8 @@ export class LeaderboardPageComponent implements OnInit {
     this.fadeOutFast = false;
 
     this.leaderboardService.renderDropdownElements(
-      await this.quizpageService.getCategoryData()
+      await this.quizpageService.getCategoryData(),
+      'dropdown-id'
     );
     this.leaderboardService.renderLeaderboardList(
       await this.leaderboardService.getLeaderboardData(this.selectedCategory)

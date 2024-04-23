@@ -1,0 +1,70 @@
+.container {
+    top: 3.5vh;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.add-question-container {
+    text-align: center;
+    font-family: 'Gill Sans MT';
+}
+
+h2 {
+    font-size: 5vh;
+    margin-bottom: 4vh;
+} 
+  
+  form {
+    display: flex;
+    flex-direction: column;
+    width: 40vw;
+}
+
+.form-label {
+    margin-bottom: 1vh;
+    font-size: 2.25vh;
+    color: #444;
+    text-align: left;
+    font-family: 'Gill Sans MT';
+    font-weight: 600;
+}
+
+.form-input {
+    padding: 1vh;
+    margin-bottom: 3vh;
+    border: 0.25vh solid #ccc;
+    border-radius: 1.25vh;
+    font-size: 2.5vh;
+    box-sizing: border-box;
+    font-family: 'Gill Sans MT';
+    resize: vertical;
+    width: 100%;
+}
+
+button {
+    border: none;
+    color: white;
+    width: 20vh;
+    height: 7vh;
+    font-family: 'Gill Sans MT';
+    font-weight: 600;
+  }
+
+.submit-button {
+    background-color: rgb(17, 188, 17);
+    padding: 1.25vh 2vh;
+    font-size: 2.75vh;
+}
+
+.submit-button:hover {
+    background-color: rgb(108, 218, 108);
+    cursor: pointer;
+}
+
+.submit-button-container {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 5vh;
+}

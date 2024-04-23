@@ -88,6 +88,16 @@ export class ManageService {
         });
       }
 
+      if (delete_button) {
+        delete_button.addEventListener('click', async function () {
+          component.createDeleteQuestionPopUpWindow(
+            'leaderboard-container-id',
+            questions[i].question_id
+          );
+          component.appService.togglePopup('delete-PopupOverlay');
+        });
+      }
+
       const element = this.document.getElementById('manage-ordered-list');
 
       if (element) element.appendChild(listElement);
@@ -271,12 +281,14 @@ export class ManageService {
     if (toAppend) toAppend.appendChild(popupOverlay);
 
     document.addEventListener('click', this.handleOutsidePopupClick.bind(this));
+    this.onModifyFormSubmittion('modify-popup-form', question.question_id);
 
     const component = this;
 
     if (closeButton) {
       closeButton.addEventListener('click', async function () {
         component.appService.closePopup('modify-PopupOverlay');
+        component.document.body.classList.remove('modal-open');
       });
     }
   }
@@ -295,6 +307,7 @@ export class ManageService {
 
       if (!isClickedInsidePopup && isClickedInsideOverlay) {
         this.appService.closePopup('modify-PopupOverlay');
+        this.document.body.classList.remove('modal-open');
       }
     }
   }
@@ -313,9 +326,90 @@ export class ManageService {
       }).then((response) => {
         if (response.ok) {
           component.appService.closePopup('modify-PopupOverlay');
+          component.document.body.classList.remove('modal-open');
         }
       });
     });
+  }
+
+  async createDeleteQuestionPopUpWindow(
+    elementToAppend: string,
+    question_id: string
+  ) {
+    const popupOverlay = this.document.createElement('div');
+    popupOverlay.setAttribute('class', 'overlay-container');
+    popupOverlay.setAttribute('id', 'delete-PopupOverlay');
+
+    const popupWindow = this.document.createElement('div');
+    popupWindow.setAttribute('class', 'popup-window');
+    popupWindow.setAttribute('id', 'delete-popup-window');
+
+    const popupTitle = this.document.createElement('h2');
+    popupTitle.textContent = `Are you sure you want to delete this question?`;
+
+    const popupNotification = this.document.createElement('h3');
+    popupNotification.textContent = 'This process is irreversible';
+
+    const yesButton = this.document.createElement('button');
+    yesButton.setAttribute('type', 'delete');
+    yesButton.setAttribute('class', 'do-delete-button');
+    yesButton.setAttribute('id', 'confirm-delete-button');
+    yesButton.textContent = 'Yes';
+
+    const noButton = this.document.createElement('button');
+    noButton.setAttribute('type', 'delete');
+    noButton.setAttribute('class', 'do-not-delete-button');
+    noButton.setAttribute('id', 'deny-delete-button');
+    noButton.textContent = 'No';
+
+    popupWindow.appendChild(popupTitle);
+    popupWindow.appendChild(popupNotification);
+    popupWindow.appendChild(yesButton);
+    popupWindow.appendChild(noButton);
+
+    popupOverlay.appendChild(popupWindow);
+
+    const toAppend = this.document.getElementById(elementToAppend);
+
+    if (toAppend) toAppend.appendChild(popupOverlay);
+    document.addEventListener(
+      'click',
+      this.handleOutsideDeletePopupClick.bind(this)
+    );
+
+    const component = this;
+
+    if (yesButton) {
+      yesButton.addEventListener('click', async function () {
+        await component.deleteQuestion(question_id).then(() => {
+          component.appService.closePopup('delete-PopupOverlay');
+        });
+      });
+    }
+
+    if (noButton) {
+      noButton.addEventListener('click', async function () {
+        component.appService.closePopup('delete-PopupOverlay');
+      });
+    }
+  }
+
+  handleOutsideDeletePopupClick(event: MouseEvent) {
+    const popupElement = this.document.getElementById('delete-popup-window');
+    const popupOverlayElement = this.document.getElementById(
+      'delete-PopupOverlay'
+    );
+
+    if (popupElement && popupOverlayElement) {
+      const isClickedInsidePopup = popupElement.contains(event.target as Node);
+      const isClickedInsideOverlay = popupOverlayElement.contains(
+        event.target as Node
+      );
+
+      if (!isClickedInsidePopup && isClickedInsideOverlay) {
+        this.appService.closePopup('delete-PopupOverlay');
+      }
+    }
   }
 
   async getSpecificQuestion(question_id: string): Promise<Question> {
@@ -337,6 +431,24 @@ export class ManageService {
         incorrect3: '',
         question_picture_path: '',
       };
+    }
+  }
+
+  async deleteQuestion(question_id: string) {
+    try {
+      const response = await fetch(
+        this.api_link + 'question/delete/' + question_id,
+        {
+          method: 'DELETE',
+        }
+      );
+      if (!response.ok) {
+        throw new Error('Failed to fetch data from API');
+      }
+      const data = await response.json();
+      return data;
+    } catch (error) {
+      return '';
     }
   }
 }

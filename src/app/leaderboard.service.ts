@@ -15,7 +15,7 @@ export class LeaderboardService {
     private appService: AppService
   ) {}
 
-  renderDropdownElements(elements: Category[]) {
+  renderDropdownElements(elements: Category[], elementToAppendId: string) {
     for (let i = 0; i < elements.length; i++) {
       const option = this.document.createElement('option');
       option.setAttribute('value', String(elements[i].category_id));
@@ -24,7 +24,7 @@ export class LeaderboardService {
       );
       option.appendChild(option_text);
 
-      const element = this.document.getElementById('dropdown-id');
+      const element = this.document.getElementById(elementToAppendId);
 
       if (element) element.appendChild(option);
     }
@@ -149,6 +149,7 @@ export class LeaderboardService {
 
     const popupWindow = this.document.createElement('div');
     popupWindow.setAttribute('class', 'popup-window');
+    popupWindow.setAttribute('id', 'reset-popup-window');
 
     const popupTitle = this.document.createElement('h2');
     popupTitle.textContent = `Are you sure you want to reset leaderboard?`;
@@ -201,10 +202,29 @@ export class LeaderboardService {
       });
     }
 
+    document.addEventListener('click', this.handleOutsidePopupClick.bind(this));
+
     if (denyResettingButton) {
       denyResettingButton.addEventListener('click', async function () {
         component.appService.closePopup('reset-PopupOverlay');
       });
+    }
+  }
+
+  handleOutsidePopupClick(event: MouseEvent) {
+    const popupElement = this.document.getElementById('reset-popup-window');
+    const popupOverlayElement =
+      this.document.getElementById('reset-PopupOverlay');
+
+    if (popupElement && popupOverlayElement) {
+      const isClickedInsidePopup = popupElement.contains(event.target as Node);
+      const isClickedInsideOverlay = popupOverlayElement.contains(
+        event.target as Node
+      );
+
+      if (!isClickedInsidePopup && isClickedInsideOverlay) {
+        this.appService.closePopup('reset-PopupOverlay');
+      }
     }
   }
 

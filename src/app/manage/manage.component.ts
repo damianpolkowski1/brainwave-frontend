@@ -35,7 +35,8 @@ export class ManageComponent implements OnInit {
     this.fadeOutFast = false;
 
     this.leaderboardService.renderDropdownElements(
-      await this.quizpageService.getCategoryData()
+      await this.quizpageService.getCategoryData(),
+      'dropdown-id'
     );
 
     const questionData = await this.manageService.getQuestionDataByCategory(

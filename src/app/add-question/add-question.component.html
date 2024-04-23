@@ -1,0 +1,33 @@
+<div class="container">
+    <div class="add-question-container">
+        <h2>Add New Question</h2>
+
+        <form class="add-question-form" id="add-question-form-id" enctype="multipart/form-data">
+            <label class="form-label" for="category-input">Select question category</label>
+            <select class="form-input" id="category-input" name="category_id" required="">
+            </select>
+
+            <label class="form-label" for="content-input">Question Content</label>
+            <textarea type="text" class="form-input" id="content-input" name="question_content" required=""></textarea>
+            
+            <label class="form-label" for="correct-input">Correct answer</label>
+            <input type="text" class="form-input" id="correct-input" name="correct_answer" required="">
+            
+            <label class="form-label" for="incorrect1-input">First incorrect answer</label>
+            <input type="text" class="form-input" id="incorrect1-input" name="incorrect1" required="">
+            
+            <label class="form-label" for="incorrect2-input">Second incorrect answer</label>
+            <input type="text" class="form-input" id="incorrect2-input" name="incorrect2" required="">
+            
+            <label class="form-label" for="incorrect3-input">Third incorrect answer</label>
+            <input type="text" class="form-input" id="incorrect3-input" name="incorrect3" required="">
+            
+            <label class="form-label" for="image-input">Select image from your local files</label>
+            <input type="file" accept=".png,.jpg,.jpeg" class="form-input" id="image-input" name="question_picture_path" style="resize: none;" required="">
+            
+            <div class="submit-button-container">
+                <button type="submit" class="submit-button">Submit</button>
+            </div>
+        </form>
+    </div>
+</div>
