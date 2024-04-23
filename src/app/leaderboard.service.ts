@@ -142,7 +142,7 @@ export class LeaderboardService {
     }
   }
 
-  async createDeletingPopUpWindow(elementToAppend: string) {
+  async createResettingPopUpWindow(elementToAppend: string) {
     const popupOverlay = this.document.createElement('div');
     popupOverlay.setAttribute('class', 'overlay-container');
     popupOverlay.setAttribute('id', 'reset-PopupOverlay');
@@ -193,7 +193,7 @@ export class LeaderboardService {
       confirmResettingButton.addEventListener('click', async function () {
         await component.emptyLeaderboard().then(async function () {
           component.appService.closePopup('reset-PopupOverlay');
-          component.clearLeaderboardTable();
+          component.removeLeaderboardElements();
           component.renderLeaderboardList(
             await component.getLeaderboardData(0)
           );
@@ -205,15 +205,6 @@ export class LeaderboardService {
       denyResettingButton.addEventListener('click', async function () {
         component.appService.closePopup('reset-PopupOverlay');
       });
-    }
-  }
-
-  clearLeaderboardTable() {
-    for (let x = 0; x < 10; x++) {
-      const entryForDeleting = this.document.getElementById(
-        'list-element-' + x
-      );
-      entryForDeleting?.remove();
     }
   }
 

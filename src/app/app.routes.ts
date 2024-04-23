@@ -1,10 +1,10 @@
 import { Routes } from '@angular/router';
-import { AppComponent } from './app.component';
 import { GameplayPageComponent } from './gameplay-page/gameplay-page.component';
 import { QuizPageComponent } from './quiz-page/quiz-page.component';
 import { ScorePageComponent } from './score-page/score-page.component';
 import { AddToLeaderboardComponent } from './add-to-leaderboard/add-to-leaderboard.component';
 import { LeaderboardPageComponent } from './leaderboard-page/leaderboard-page.component';
+import { ManageComponent } from './manage/manage.component';
 
 const routes: Routes = [
   {
@@ -31,6 +31,11 @@ const routes: Routes = [
     path: 'leaderboard',
     component: LeaderboardPageComponent,
     title: 'Leaderboard',
+  },
+  {
+    path: 'manage-questions',
+    component: ManageComponent,
+    title: 'Manage Questions',
   },
 ];
 

@@ -1,0 +1,19 @@
+<div class="manage-container" id="leaderboard-container-id">
+    <div class="category-dropdown" [class.fade-in]="fadeInDropdown" [class.fade-out-fast]="fadeOutFast">
+      <select class="select-dropdown" id="dropdown-id" [(ngModel)]="selectedCategory" (change)="onCategoryChange()">
+        <option value="0" selected>All Categories</option>
+      </select>
+    </div>
+    <div class="manage-list" id="manage-list-id" [class.fade-in]="fadeInList" [class.fade-out-fast]="fadeOutFast" [class.fade-out]="fadeOut">
+      <h2>Manage Questions</h2>
+      <h3>Total questions in this category: {{ numberOfQuestionsInThisCategory }}</h3>
+      <ol id="manage-ordered-list">
+        <li class="manage-list-description">
+          <span class="question">Question</span>
+          <span class="category">Category</span>
+          <span class="modify">Modify</span>
+          <span class="delete">Delete</span>
+        </li>
+      </ol>
+    </div>
+  </div>

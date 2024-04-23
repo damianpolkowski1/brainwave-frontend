@@ -213,6 +213,7 @@
   align-items: center;
   opacity: 0;
   transition: opacity 0.5s ease;
+  z-index: 99;
 }
 
 .popup-window {
@@ -237,7 +238,7 @@
   text-align: center;
   display: inline-block;
   font-size: 2.25vh;
-  font-family: "Kanit", sans-serif;
+  font-family: 'Gill Sans MT';
   font-weight: 600;
   margin-right: 2vh;
 }
@@ -257,7 +258,7 @@
   text-align: center;
   display: inline-block;
   font-size: 2.25vh;
-  font-family: "Kanit", sans-serif;
+  font-family: 'Gill Sans MT';
   font-weight: 600;
 }
 

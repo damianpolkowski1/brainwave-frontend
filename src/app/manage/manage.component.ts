@@ -1,21 +1,22 @@
-import { Component, OnInit, NgModule } from '@angular/core';
+import { Component, OnInit, ViewEncapsulation, NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { ViewEncapsulation } from '@angular/core';
 import { QuizPageService } from '../quiz-page.service';
 import { AppService } from '../app.service';
 import { LeaderboardService } from '../leaderboard.service';
 import { FormsModule } from '@angular/forms';
+import { ManageService } from '../manage.service';
 
 @Component({
-  selector: 'app-leaderboard-page',
+  selector: 'app-manage',
   standalone: true,
   imports: [CommonModule, FormsModule],
-  templateUrl: './leaderboard-page.component.html',
-  styleUrl: './leaderboard-page.component.css',
+  templateUrl: './manage.component.html',
+  styleUrl: './manage.component.css',
   encapsulation: ViewEncapsulation.None,
 })
-export class LeaderboardPageComponent implements OnInit {
+export class ManageComponent implements OnInit {
   selectedCategory: number = 0;
+  numberOfQuestionsInThisCategory: number = 0;
   fadeInDropdown: boolean = false;
   fadeInList: boolean = false;
   fadeOutFast: boolean = false;
@@ -23,13 +24,10 @@ export class LeaderboardPageComponent implements OnInit {
 
   constructor(
     private quizpageService: QuizPageService,
+    private appService: AppService,
     private leaderboardService: LeaderboardService,
-    private appService: AppService
+    private manageService: ManageService
   ) {}
-
-  private delay(ms: number) {
-    return new Promise((resolve) => setTimeout(resolve, ms));
-  }
 
   async ngOnInit() {
     this.fadeOutFast = true;
@@ -39,9 +37,13 @@ export class LeaderboardPageComponent implements OnInit {
     this.leaderboardService.renderDropdownElements(
       await this.quizpageService.getCategoryData()
     );
-    this.leaderboardService.renderLeaderboardList(
-      await this.leaderboardService.getLeaderboardData(this.selectedCategory)
+
+    const questionData = await this.manageService.getQuestionDataByCategory(
+      this.selectedCategory
     );
+    this.numberOfQuestionsInThisCategory = questionData.length;
+
+    this.manageService.renderQuestionList(questionData);
 
     this.fadeInDropdown = true;
     this.fadeInList = true;
@@ -50,26 +52,26 @@ export class LeaderboardPageComponent implements OnInit {
     this.fadeInList = false;
   }
 
+  private delay(ms: number) {
+    return new Promise((resolve) => setTimeout(resolve, ms));
+  }
+
   async onCategoryChange() {
     this.fadeOut = true;
     await this.delay(700);
     this.fadeOut = false;
 
-    this.leaderboardService.removeLeaderboardElements();
+    this.manageService.clearQuestionTable();
 
     this.fadeInList = true;
     await this.delay(700);
     this.fadeInList = false;
 
-    this.leaderboardService.renderLeaderboardList(
-      await this.leaderboardService.getLeaderboardData(this.selectedCategory)
+    const questionData = await this.manageService.getQuestionDataByCategory(
+      this.selectedCategory
     );
-  }
+    this.numberOfQuestionsInThisCategory = questionData.length;
 
-  onResetClick() {
-    this.leaderboardService.createResettingPopUpWindow(
-      'leaderboard-container-id'
-    );
-    this.appService.togglePopup('reset-PopupOverlay');
+    this.manageService.renderQuestionList(questionData);
   }
 }
