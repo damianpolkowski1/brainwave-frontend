@@ -68,3 +68,21 @@ button {
     justify-content: center;
     margin-bottom: 5vh;
 }
+
+.submittion-div {
+    font-family: "Gill Sans MT";
+    width: 50vw;
+    text-align: center;
+    margin: auto;
+    transform: translateX(0) translateY(50%);
+}
+
+.submittion-div .submittion-header {
+    font-size: 6vh;
+    color: rgb(110, 110, 110);
+}
+
+.info-icon {
+    cursor: pointer;
+    margin-left: 5px;
+  }

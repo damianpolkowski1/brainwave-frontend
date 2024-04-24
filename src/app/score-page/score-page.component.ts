@@ -9,6 +9,7 @@ import {
 } from '@angular/router';
 import { OnInit, OnDestroy } from '@angular/core';
 import { Score } from '../score';
+import JSConfetti from 'js-confetti';
 
 @Component({
   selector: 'app-score-page',
@@ -108,6 +109,9 @@ export class ScorePageComponent implements OnInit, OnDestroy {
 
       if (time_elapsed >= this.duration) {
         clearInterval(this.interval);
+        const jsConfetti = new JSConfetti();
+
+        jsConfetti.addConfetti({ confettiRadius: 6, confettiNumber: 600 });
       }
     }, time_step);
   }

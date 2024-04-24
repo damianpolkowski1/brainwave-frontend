@@ -6,6 +6,9 @@
 .question-image {
     padding-top: 3vh;
     width: 65vh;
+    max-width: 800px;
+    height: 48.75vh;
+    max-height: 600px;
 }
 
 .question-content {

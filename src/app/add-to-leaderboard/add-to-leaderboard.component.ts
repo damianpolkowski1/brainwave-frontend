@@ -39,6 +39,10 @@ export class AddToLeaderboardComponent implements OnInit {
   });
 
   async submitForm() {
+    if(!this.leaderboardForm.value.Nickname) {
+      return;
+    }
+
     if (this.formSubmitted) {
       this.router.navigate([`/`], { relativeTo: this.route });
       return;

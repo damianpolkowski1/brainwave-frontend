@@ -3,6 +3,8 @@ import { DOCUMENT } from '@angular/common';
 import { Question } from './question';
 import { LeaderboardService } from './leaderboard.service';
 import { AppService } from './app.service';
+import { Router, ActivatedRoute } from '@angular/router';
+import JSConfetti from 'js-confetti';
 
 @Injectable({
   providedIn: 'root',
@@ -13,8 +15,14 @@ export class ManageService {
   constructor(
     @Inject(DOCUMENT) private document: Document,
     private leaderboardService: LeaderboardService,
-    private appService: AppService
+    private appService: AppService,
+    private router: Router,
+    private route: ActivatedRoute
   ) {}
+
+  private delay(ms: number) {
+    return new Promise((resolve) => setTimeout(resolve, ms));
+  }
 
   async getQuestionDataByCategory(category_id: number): Promise<Question[]> {
     try {
@@ -165,6 +173,7 @@ export class ManageService {
     popupForm.setAttribute('class', 'popup-form-container');
     popupForm.setAttribute('id', 'modify-popup-form');
     popupForm.setAttribute('enctype', 'multipart/form-data');
+    popupForm.setAttribute('autocomplete', 'off');
 
     const questionContentLabel = this.document.createElement('label');
     questionContentLabel.setAttribute('class', 'popup-form-label');
@@ -231,6 +240,23 @@ export class ManageService {
     imageLabel.setAttribute('for', 'image-input');
     imageLabel.textContent = 'Select image from your local files';
 
+    const imageLabelText = this.document.createElement('div');
+    imageLabelText.textContent =
+      "(leave empty if you want to keep current image)";
+
+    imageLabel.appendChild(document.createElement('br'));
+
+    const imageLabelSpan = this.document.createElement('span');
+    imageLabelSpan.setAttribute('class', 'info-icon');
+    imageLabelSpan.setAttribute(
+      'title',
+      "Images are displayed in 4:3 proportions, so if you don't want your images to be distorted please use these proportions"
+    );
+    const imageLabelSpanText = this.document.createTextNode('ℹ️');
+    imageLabelSpan.appendChild(imageLabelSpanText);
+    imageLabelText.appendChild(imageLabelSpan);
+    imageLabel.appendChild(imageLabelText);
+
     const imageInput = this.document.createElement('input');
     imageInput.setAttribute('type', 'file');
     imageInput.setAttribute('accept', '.png,.jpg,.jpeg');
@@ -245,7 +271,6 @@ export class ManageService {
     incorrect1Input.setAttribute('required', '');
     incorrect2Input.setAttribute('required', '');
     incorrect3Input.setAttribute('required', '');
-    imageInput.setAttribute('required', '');
 
     const submitFormDiv = this.document.createElement('div');
     submitFormDiv.setAttribute('class', 'submit-button-container');
@@ -327,6 +352,12 @@ export class ManageService {
         if (response.ok) {
           component.appService.closePopup('modify-PopupOverlay');
           component.document.body.classList.remove('modal-open');
+
+          const elementsToDelete = ['category-dropdown-id', 'manage-list-id'];
+          component.afterModifySubmittion(
+            elementsToDelete,
+            'The question has been modified!'
+          );
         }
       });
     });
@@ -383,6 +414,11 @@ export class ManageService {
       yesButton.addEventListener('click', async function () {
         await component.deleteQuestion(question_id).then(() => {
           component.appService.closePopup('delete-PopupOverlay');
+          const elementsToDelete = ['category-dropdown-id', 'manage-list-id'];
+          component.afterModifySubmittion(
+            elementsToDelete,
+            'The question has been deleted!'
+          );
         });
       });
     }
@@ -450,5 +486,37 @@ export class ManageService {
     } catch (error) {
       return '';
     }
+  }
+
+  async afterModifySubmittion(elementsToDelete: string[], afterText: string) {
+    for (let x = 0; x < elementsToDelete.length; x++) {
+      const elementToDelete = this.document.getElementById(elementsToDelete[x]);
+      elementToDelete?.remove();
+    }
+
+    const jsConfetti = new JSConfetti();
+    const submittionDiv = this.document.createElement('div');
+    submittionDiv.setAttribute('class', 'submittion-div');
+
+    const submittionHeader = this.document.createElement('h2');
+    submittionHeader.setAttribute('class', 'submittion-header');
+    const headerText = this.document.createTextNode(afterText);
+    submittionHeader.appendChild(headerText);
+
+    submittionDiv.appendChild(submittionHeader);
+
+    const elementToAppend = this.document.getElementById(
+      'leaderboard-container-id'
+    );
+
+    if (elementToAppend) elementToAppend.appendChild(submittionDiv);
+
+    await jsConfetti.addConfetti({
+      confettiRadius: 6,
+      confettiNumber: 600,
+    });
+
+    await this.delay(1000);
+    this.router.navigate([`/`], { relativeTo: this.route });
   }
 }

@@ -1,5 +1,5 @@
-<div class="manage-container" id="leaderboard-container-id">
-    <div class="category-dropdown" [class.fade-in]="fadeInDropdown" [class.fade-out-fast]="fadeOutFast">
+<div class="manage-container" id="leaderboard-container-id" [class.fade-in]="fadeInDropdown" [class.fade-out-fast]="fadeOutFast">
+    <div class="category-dropdown" id="category-dropdown-id" [class.fade-in]="fadeInDropdown" [class.fade-out-fast]="fadeOutFast">
       <select class="select-dropdown" id="dropdown-id" [(ngModel)]="selectedCategory" (change)="onCategoryChange()">
         <option value="0" selected>All Categories</option>
       </select>

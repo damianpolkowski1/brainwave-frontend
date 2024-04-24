@@ -31,6 +31,6 @@ export class AddQuestionComponent implements OnInit{
 
   async ngOnInit() {
     this.leaderboardService.renderDropdownElements(await this.quizpageService.getCategoryData(), "category-input");
-    this.addQuestionService.onAddQuestionFormSubmittion("add-question-form-id")
+    this.addQuestionService.onAddQuestionFormSubmittion("add-question-form-id");
   }
 }
