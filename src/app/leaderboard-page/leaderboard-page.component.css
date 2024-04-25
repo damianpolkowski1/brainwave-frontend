@@ -3,6 +3,10 @@
     margin-top: 3vh;
     font-family: 'Gill Sans MT';
   }
+
+  body {
+    overflow-x: hidden;
+}
   
   .category-dropdown {
     margin-bottom: 3vh;

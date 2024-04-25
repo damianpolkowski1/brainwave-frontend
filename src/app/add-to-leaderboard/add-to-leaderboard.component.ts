@@ -39,7 +39,7 @@ export class AddToLeaderboardComponent implements OnInit {
   });
 
   async submitForm() {
-    if(!this.leaderboardForm.value.Nickname) {
+    if (!this.leaderboardForm.value.Nickname) {
       return;
     }
 
