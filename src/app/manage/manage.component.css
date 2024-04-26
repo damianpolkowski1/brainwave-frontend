@@ -69,13 +69,9 @@
   .manage-list li .category {
     width: 20%;
   }
-  
-  .manage-list li .modify {
-    width: 15%;
-  }
-  
-  .manage-list li .delete {
-    width: 15%;
+
+  .manage-list li .manage {
+    width: 30%;
   }
 
   button {
@@ -91,6 +87,8 @@
   .modify-button {
     background-color: rgb(17, 188, 17);
     font-size: 2.25vh;
+    margin-right: 2.25vh;
+    transition: background-color 0.3s ease;
   }
 
   .modify-button:hover {
@@ -101,12 +99,41 @@
   .delete-button {
     background-color: rgb(227, 26, 26);
     font-size: 2.25vh;
+    transition: background-color 0.3s ease;
   }
   
   .delete-button:hover {
     background-color: rgb(231, 110, 110);
     cursor: pointer;
   }
+
+  @media only screen and (max-width: 1100px) {
+    .modify-button {
+      font-size: 2vh;
+      margin-right: 0;
+      margin-bottom: 0.5vh;
+    }
+
+    .delete-button {
+      font-size: 2vh;
+    }
+
+    .manage-list li .manage {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .manage-list li {
+      font-size: 2vh;
+      padding: 1vh 0;
+    }
+
+    .manage-list li:first-child {
+      font-size: 2.5vh;
+      font-weight: 550;
+    }
+}
 
   @keyframes fadeInUp {
     from {
@@ -207,6 +234,7 @@
 .submit-button {
     background-color: rgb(17, 188, 17);
     font-size: 2.25vh;
+    transition: background-color 0.3s ease;
 }
 
 .submit-button:hover {
@@ -232,6 +260,7 @@
   cursor: pointer;
   padding: 0;
   line-height: 1;
+  transition: background-color 0.3s ease;
 }
 
 .close-button:hover {
@@ -251,6 +280,7 @@
   font-family: 'Gill Sans MT';
   font-weight: 600;
   margin-right: 2vh;
+  transition: background-color 0.3s ease;
 }
 
 .do-delete-button:hover {
@@ -270,6 +300,7 @@
   font-size: 2.25vh;
   font-family: 'Gill Sans MT';
   font-weight: 600;
+  transition: background-color 0.3s ease;
 }
 
 .do-not-delete-button:hover {

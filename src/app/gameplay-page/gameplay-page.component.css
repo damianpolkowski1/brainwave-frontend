@@ -54,6 +54,7 @@
 
 #answerButton0 {
     background-color: rgb(255, 37, 37);
+    transition: background-color 0.3s ease;
 }
 
 #answerButton0:hover {
@@ -74,6 +75,7 @@
 
 #answerButton1 {
     background-color: rgb(29, 148, 29);
+    transition: background-color 0.3s ease;
 }
 
 #answerButton1:hover {
@@ -93,6 +95,7 @@
 
 #answerButton2 {
     background-color: rgb(37, 37, 255);
+    transition: background-color 0.3s ease;
 }
 
 #answerButton2:hover {
@@ -113,6 +116,7 @@
 
 #answerButton3 {
     background-color: rgb(255, 179, 37);
+    transition: background-color 0.3s ease;
 }
 
 #answerButton3:hover {

@@ -60,28 +60,26 @@ export class ManageService {
       );
       category.appendChild(category_text);
 
-      const modify_span = this.document.createElement('span');
-      modify_span.setAttribute('class', 'modify');
+      const manage_span = this.document.createElement('span');
+      manage_span.setAttribute('class', 'manage');
+
       const modify_button = this.document.createElement('button');
       modify_button.setAttribute('class', 'modify-button');
       modify_button.setAttribute('id', 'modify-' + questions[i].question_id);
       const modify_button_text = this.document.createTextNode('Modify');
       modify_button.appendChild(modify_button_text);
-      modify_span.appendChild(modify_button);
+      manage_span.appendChild(modify_button);
 
-      const delete_span = this.document.createElement('span');
-      delete_span.setAttribute('class', 'delete');
       const delete_button = this.document.createElement('button');
       delete_button.setAttribute('class', 'delete-button');
       delete_button.setAttribute('id', 'delete-' + questions[i].question_id);
       const delete_button_text = this.document.createTextNode('Delete');
       delete_button.appendChild(delete_button_text);
-      delete_span.appendChild(delete_button);
+      manage_span.appendChild(delete_button);
 
       listElement.appendChild(question_content);
       listElement.appendChild(category);
-      listElement.appendChild(modify_span);
-      listElement.appendChild(delete_span);
+      listElement.appendChild(manage_span);
 
       const component = this;
 
@@ -242,7 +240,7 @@ export class ManageService {
 
     const imageLabelText = this.document.createElement('div');
     imageLabelText.textContent =
-      "(leave empty if you want to keep current image)";
+      '(leave empty if you want to keep current image)';
 
     imageLabel.appendChild(document.createElement('br'));
 

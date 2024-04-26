@@ -95,7 +95,6 @@ export class GameplayPageComponent implements OnInit {
           this.scoreService.setScore(
             await this.gameplayService.calculateScore(this.answers)
           );
-          console.log(this.scoreService.getScore().score);
           this.router.navigate(['/finished-quiz']);
           return;
         }

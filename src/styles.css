@@ -17,6 +17,7 @@
     height: 12vh;
     display: flex;
     align-items: center;
+    justify-content: space-between;
     z-index: 99;
 }
 
@@ -41,6 +42,7 @@
     font-family: 'Gill Sans MT';
     font-size: 3.25vh;
     font-weight: 700;
+    transition: background-color 0.3s ease;
 }
 
 .navbar-list li a:hover {
@@ -109,8 +111,19 @@
     animation: slide-in 0.8s ease;
 }
 
-@media only screen and (max-width: 750px) {
+@media only screen and (max-width: 900px) {
     .navbar-list {
         flex-direction: column;
+        align-items: center;
+    }
+
+    .navbar {
+        width: 100%;
+        height: 20vh;
+    }
+    
+    .navbar-list li {
+        display: flex;
+        margin: 0.5vh 0vh;
     }
 }

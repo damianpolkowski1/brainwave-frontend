@@ -11,6 +11,17 @@ body {
     transform: translateX(0) translateY(50%);
   }
 
+  @media only screen and (max-width: 700px) {
+    .form-section {
+        font-family: "Gill Sans MT";
+        width: 50vw;
+        text-align: center;
+        margin: auto;
+        transform: translateX(0);
+        margin-top: 3vh;
+      }
+}
+
 .form-section .section-heading {
     font-size: 6vh;
     margin-bottom: 5vh;
@@ -63,13 +74,13 @@ button.add-button {
     font-family: "Gill Sans MT";
     font-size: 3.75vh;
     padding: 2vh 5.5vh;
-    background-color: #337ab7;
+    background-color: #2c75b4;
     color: #fff;
     border: none;
     cursor: pointer;
     transition: background-color 0.3s ease;
 }
 
-button.primary:hover {
-    background-color: #265d8c;
+button.add-button:hover {
+    background-color: #6596c2;
 }
