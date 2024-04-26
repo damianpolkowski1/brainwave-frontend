@@ -129,17 +129,12 @@ export class ManageService {
     category.textContent = 'Category';
 
     const modify = this.document.createElement('span');
-    modify.setAttribute('class', 'modify');
-    modify.textContent = 'Modify';
-
-    const del = this.document.createElement('span');
-    del.setAttribute('class', 'delete');
-    del.textContent = 'Delete';
+    modify.setAttribute('class', 'manage');
+    modify.textContent = 'Manage';
 
     header_entry.appendChild(question);
     header_entry.appendChild(category);
     header_entry.appendChild(modify);
-    header_entry.appendChild(del);
 
     new_list.appendChild(header_entry);
 
